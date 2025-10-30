@@ -21,7 +21,7 @@
     </div>
     <% if(currUser && currUser._id.equals(listings.owner._id)) { %>
     <div class="btns">
-        <a href="/listings/<%= listings._id %>/edit" class="btn btn-dark add-btn col-1 offset-3">Edit</a>
+        <a href="/listings/<%= listings._id %>/edit" class="btn click-white btn-dark add-btn  col-1 offset-3">Edit</a>
         <form method="POST" action="/listings/<%=listings._id%>?_method=DELETE" >
             <button class="btn btn-dark offset-5">Delete</button>
         </form>
@@ -73,7 +73,7 @@
                     <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
                     <p class="card-text"><%= review.comment %></p>  
                     <form class="mb-3" method="POST" action="/listings/<%=listings._id%>/reviews/<%=review._id%>?_method=DELETE">
-                        <button class="btn btn-sm btn-dark">Delete</button>
+                        <button class="btn click-white btn-sm btn-dark">Delete</button>
                     </form>
                 </div>
             </div>

@@ -94,19 +94,7 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 
-// app.get("/testListing", wrapAsync(async(req,res) =>{
-//     let sampleListing = new Listing({
-//         title : "Home",
-//         description : "close to beach",
-//         price : 25000,
-//         location : "Andhra Pradesh, Rayachoty",
-//         country : "India",
-//     });
 
-//     await sampleListing.save();
-//     console.log("Sample listing was saved");
-//     res.send("Saved Successfully");
-// }));
 
 app.use((req, res, next) => {
     res.status(404).send("Page Not Found");
@@ -114,9 +102,12 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) =>{
     const {statusCode = 500, message = "Something went wrong"} = err;
     res.status(statusCode).render("error.ejs", {message});
-  //  res.status(statusCode).send(message);
+  
 })
 
-app.listen(8080,()=>{
-    console.log("Server Listening to port");
-})
+const port = process.env.PORT || 8080;
+const host = "0.0.0.0"; 
+
+app.listen(port, host, () => {
+  console.log(`✅ Server running on http://${host}:${port}`);
+});
