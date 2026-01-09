@@ -27,7 +27,7 @@ Deployment	  : Render
 
 🔗 Live Demo   
 ---------------------------  
-WonderLust live Link -  (https://wanderlust-ifwi.onrender.com)  
+WonderLust live Link - (https://wanderlust-n6f5.onrender.com) 
 
 🧑‍💻 How to Run Locally  
 ---------------------------  
