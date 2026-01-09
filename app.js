@@ -51,7 +51,7 @@ const Store = MongoStore.create({
     },
     touchAfter: 24 * 3600,
 })
-Store.on("error", () =>{
+Store.on("error", (err) =>{
     console.log("Error in Mongo Session Store", err); 
 })
 
@@ -67,9 +67,6 @@ const sessionOptions = {
     },
 };
 
-app.get("/", (req, res) => {
-  res.redirect("/listings"); 
-});
 
 
 app.use(session(sessionOptions));
@@ -81,6 +78,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.get("/", (req, res) => {
+  res.redirect("/listings"); 
+});
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
