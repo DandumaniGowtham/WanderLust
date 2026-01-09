@@ -95,7 +95,10 @@ app.use("/", userRouter);
 //     res.status(404).send("Page Not Found");
 // });
 
-app.all("(.*)", (req, res, next) => {
+// app.all("(.*)", (req, res, next) => {
+//     res.status(404).send("Page Not Found");
+// });
+app.use((req, res, next) => {
     res.status(404).send("Page Not Found");
 });
 
