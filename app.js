@@ -91,13 +91,13 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-app.all("*", (req, res, next) => {
-    res.status(404).send("Page Not Found");
-});
-
-// app.use((req, res, next) => {
+// app.all("*", (req, res, next) => {
 //     res.status(404).send("Page Not Found");
 // });
+
+app.use((req, res, next) => {
+    res.status(404).send("Page Not Found");
+});
 
 app.use((err, req, res, next) =>{
     const {statusCode = 500, message = "Something went wrong"} = err;
