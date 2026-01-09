@@ -8,7 +8,7 @@ module.exports.renderLoginForm = (req, res) =>{
     res.render("users/login.ejs");
 };
 
-module.exports.signup = async (req, res) =>{
+module.exports.signup = async (req, res, next) =>{
     try {
         let {username, email, password} = req.body;
         const newUser = new User({email, username});
@@ -27,7 +27,7 @@ module.exports.signup = async (req, res) =>{
     }
 };
 
-module.exports.login = async (req, res) =>{
+module.exports.login = async (req, res, next) =>{
         req.flash("success","User logged in successfully");
         let redirectUrl = res.locals.redirectUrl || "/listings"; 
         res.redirect(redirectUrl);
