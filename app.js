@@ -15,8 +15,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-
-
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
@@ -67,6 +65,9 @@ const sessionOptions = {
     },
 };
 
+app.get("/", (req, res) => {
+  res.redirect("/listings"); 
+});
 
 
 app.use(session(sessionOptions));
@@ -86,18 +87,10 @@ app.use((req, res, next) => {
     next();
 })
 
-app.get("/", (req, res) => {
-  res.redirect("/listings"); 
-});
-
-
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
-
-
-
 
 app.use((req, res, next) => {
     res.status(404).send("Page Not Found");
